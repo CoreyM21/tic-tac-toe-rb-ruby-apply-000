@@ -1,4 +1,13 @@
-board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+WIN_COMBINATIONS = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8]
+]
 
 def display_board(board)
   puts " #{board[0]} | #{board[1]} | #{board[2]} "
@@ -12,11 +21,11 @@ def input_to_index(user_input)
   user_input.to_i - 1
 end
 
-def move(board, index, current_player = "X")
+def move(board, index, current_player)
   board[index] = current_player
 end
 
-def position_taken?(board, location)
+def position_taken?(board, index)
   board[location] != " " && board[location] != ""
 end
 
@@ -57,17 +66,6 @@ def current_player(board)
     "O" 
   end
 end
-
-WIN_COMBINATIONS = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 4, 8],
-  [2, 4, 6],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8]
-]
 
 def won?(board)
   WIN_COMBINATIONS.each do |win_combination|
