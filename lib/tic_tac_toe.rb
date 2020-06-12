@@ -59,7 +59,14 @@ def current_player(board)
   turn_count(board).even? ? "X" : "O"
 end
 
-
+def play(board)
+turn(board) until over?(board)
+  if won?(board)
+    puts "Congratulations #{winner(board)}!"
+  elsif draw?(board)
+    puts "Cat's Game!"
+  end
+end
 
 def won?(board)
   WIN_COMBINATIONS.each do |win_combination|
