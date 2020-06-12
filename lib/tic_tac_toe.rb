@@ -45,10 +45,6 @@ def turn(board)
   end
 end
 
-def position_taken?(board, index)
-  !(board[index].nil? || board[index] == " ")
-end
-
 def turn_count(board)
    turns = 0
    board.each do |space|
@@ -60,12 +56,10 @@ def turn_count(board)
 end
     
 def current_player(board)
-  if (turn_count(board).even?)
-    "X"
-  else (turn_count(board).odd?)
-    "O" 
-  end
+  turn_count(board).even? ? "X" : "O"
 end
+
+
 
 def won?(board)
   WIN_COMBINATIONS.each do |win_combination|
