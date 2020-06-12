@@ -38,7 +38,7 @@ def turn(board)
   input = gets.strip
   index = input_to_index(input)
   if valid_move?(board, index)
-    move(board, index)
+    move(board, index, current_player(board))
     display_board(board)
   else
     turn(board)
@@ -50,13 +50,13 @@ def position_taken?(board, index)
 end
 
 def turn_count(board)
-   counter = 0
-   board.each do |spaces|
+   turns = 0
+   board.each do |space|
       if (spaces == "X") || (spaces == "O")
-         counter += 1
+         turns += 1
       end
    end
-   counter
+   turns
 end
     
 def current_player(board)
